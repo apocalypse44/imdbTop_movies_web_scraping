@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    
+    <div class="paddedText">
+        <h1>IMDB TOP RATED MOVIES</h1>
+    </div>
+
+    <br>
+
+    <div>
+        {%if show_form %}
+        <center>
+            <p>Click Below To Scrape!!!!</p>
+            <form action="{{url_for('scrape')}}" method="post">
+                <!-- <input type="submit" value="Scrape"> -->
+                
+                <button class="btn">Scrape</button>    
+            </form>
+        </center>
+        {% endif %}
+    </div>
+
+    {% if headings %}
+        <div class="testCenter">
+            <table>
+                <tr>
+                    {% for header in headings %}
+                        <th>{{header}}</th>
+                    {% endfor %}
+                </tr>
+                
+
+                {% for x in data %}
+                <tr>
+                    {% for i in x %}
+                        <td>{{i}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    {% endif %}
+    
+{% endblock %}
